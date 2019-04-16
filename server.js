@@ -51,16 +51,17 @@ var server = http.createServer(function (request, response) {
     response.end()
   } else if (path === '/isxml') {
     response.statusCode = 200
-    response.setHeader('Content-Type', 'application/xml')
+    response.setHeader('Content-Type', 'text/json;charset=utf-8')
     response.setHeader('Access-Control-Allow-Origin','http://frank.com:8001')
     response.write(`
-    <?xml version="1.0" encoding="UTF-8"?>
-  <note>
-    <to>lsq</to>
-    <from>seth</from>
-    <heading>say hi</heading>
-    <body>你好</body>
-  </note>
+    {
+      "note":{
+        "to": "lsq",
+        "from": "seth",
+        "heading": "say hi",
+        "body": "hello"
+      }
+    }
   `)
   response.end()
   } else {
